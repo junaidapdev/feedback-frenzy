@@ -1,15 +1,30 @@
 import React from 'react'
+import FeedbackItem from './components/FeedbackItem'
 import Header from './components/Header'
-const title = 'Blog Post'
-const body = "this is my blog post"
+import FeedbackData from './data/FeedbackData'
+import FeedbackList from './components/FeedbackList'
+import FeedbackStats from './components/FeedbackStats'
+import { useState } from 'react'
+ 
 
 
 const App = () => {
+
+  const [feedback, setFeedback] = useState(FeedbackData)
+
+  const deleteFeedback = (id) => {
+    if(window.confirm('Are you sure?')) {
+      
+      setFeedback(feedback.filter((item) => item.id !== id))
+    }
+  }
+
   return (
   <>
     <Header/>
     <div className="container">
-      <h1>App</h1>
+      <FeedbackStats feedback={feedback}/>
+      <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
     </div>
   </>
   )
