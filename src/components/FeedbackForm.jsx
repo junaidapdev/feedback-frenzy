@@ -7,7 +7,7 @@ import RatingSelect from './RatingSelect'
 const FeedbackForm = () => {
 
     const [text, setText] = useState('')
-    const [rating, setrating] = useState(10)
+    const [rating, setRating] = useState(10)
     const [btnDisdabled, setBtnDisdabled] = useState(true)
     const [message, setMessage] = useState('')
 
@@ -33,7 +33,7 @@ const FeedbackForm = () => {
             <form>
                 <h2>How would you rate your service with us?</h2>
 
-                <RatingSelect/>
+                <RatingSelect select={(rating) => setRating(rating)} />
 
                 <div className="input-group">
                     <input onChange={handleTextChange} value={text} type="text" placeholder="Write a Review" />
